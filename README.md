@@ -1,7 +1,7 @@
 # devops-scripts
 Collection of bash scripts for setting up new environments
 
-1. Add user to Sudo group
+## 1. Add user to Sudo group
 
 ```
 su
@@ -9,14 +9,14 @@ sudo usermod -aG sudo {username}
 shutdown -r now
 ```
 
-2. Install Git
+## 2. Install Git
 
 ```
 sudo apt update
 sudo apt install git
 ```
 
-3. Virtual Box Additions 
+## 3. Virtual Box Additions 
 
 > **_WIP:_** Need to fix the run command  
 
@@ -28,13 +28,13 @@ sudo /mnt/cdrom/VBoxLinuxAdditions.run --nox11
 sudo shutdown -r now
 ```
 
-4. Insall ohmyzsh
+## 4. Insall ohmyzsh
 
 ```
 sudo apt-get install zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
-5. Install docker & docker-engine
+## 5. Install docker & docker-engine
 
 ```
 sudo apt install \
@@ -59,7 +59,7 @@ sudo docker run hello-world
 sudo usermod -aG docker ${USER}
 ```
 
-6. Generate Git SSH key
+## 6. Generate Git SSH key
 ```
 ssh-keygen -t ed25519 -C "youremail@mail.com"
 eval `ssh-agent -s`
@@ -67,8 +67,28 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519
 ```
 
-7. Format new drive
+## 7. Format new drive
 ```
 sudo fdisk -l
 mkfs.ext4 /dev/sdXY
+```
+
+## 8. Set up Firewall
+
+```
+sudo apt update
+sudo apt install ufw
+```
+
+```
+sudo ufw app list
+```
+ 
+```
+sudo ufw allow OpenSSH
+```
+
+```
+sudo ufw enable
+sudo ufw status
 ```
