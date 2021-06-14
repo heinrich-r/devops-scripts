@@ -78,17 +78,41 @@ mkfs.ext4 /dev/sdXY
 ```
 sudo apt update
 sudo apt install ufw
-```
 
-```
 sudo ufw app list
-```
- 
-```
-sudo ufw allow OpenSSH
-```
 
-```
+sudo ufw allow OpenSSH
+
 sudo ufw enable
 sudo ufw status
+```
+
+## 9. Install Nginx
+
+```
+sudo apt install nginx
+sudo ufw app list
+sudo ufw allow 'Nginx HTTP'
+sudo systemctl status nginx
+```
+
+http://your_server_ip >> should display Welcome to nginx!
+
+```
+sudo systemctl restart nginx
+sudo systemctl disable nginx
+```
+
+## 10. Set up Nginx
+
+```
+sudo mkdir -p /var/www/your_domain/html
+sudo chown -R $USER:$USER /var/www/your_domain/html
+sudo chmod -R 755 /var/www/your_domain
+nano /var/www/your_domain/html/index.html
+sudo nano /etc/nginx/sites-available/your_domain
+sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
+sudo nano /etc/nginx/nginx.conf  ## {server_names_hash_bucket_size 64;}
+sudo nginx -t
+sudo systemctl restart nginx
 ```
