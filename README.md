@@ -133,3 +133,26 @@ sudo nano /etc/nginx/nginx.conf  ## {server_names_hash_bucket_size 64;}
 sudo nginx -t
 sudo systemctl restart nginx
 ```
+
+## 11. Set up SSH Server
+
+```
+sudo apt update
+sudo apt install openssh-server
+sudo systemctl enable ssh
+```
+
+## 12. Set up RDP Server (Xrdp)
+
+```
+sudo apt update
+sudo apt install xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils
+sudo apt install xrdp
+sudo adduser xrdp ssl-cert
+```
+
+```
+sudo ufw allow from 192.168.1.0/24 to any port 3389
+sudo nano /etc/xrdp/xrdp.ini
+sudo systemctl restart xrdp
+```
