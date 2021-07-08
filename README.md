@@ -5,6 +5,7 @@ Collection of bash scripts for setting up new environments
 
 ```
 su
+sudo adduser {username}
 sudo usermod -aG sudo {username}
 shutdown -r now
 ```
@@ -31,7 +32,7 @@ sudo shutdown -r now
 ## 4. Insall ohmyzsh
 
 ```
-sudo apt-get install zsh
+sudo apt install zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 ## 5. Install docker & docker-engine
@@ -71,6 +72,22 @@ cat ~/.ssh/id_ed25519
 ```
 sudo fdisk -l
 mkfs.ext4 /dev/sdXY
+
+OR
+
+sudo apt install parted
+parted /dev/sdb mklabel gpt
+parted -a opt /dev/sdb mkpart primary ext4 0% 100%
+mkfs.ext4 -L storageprox /dev/sdb1
+lsblk -fs
+```
+
+Mounting the drive:
+```
+mkdir -p /mnt/data
+nano /etc/fstab
+LABEL=storageprox /mnt/data ext4 defaults 0 2
+mount -a
 ```
 
 ## 8. Set up Firewall
