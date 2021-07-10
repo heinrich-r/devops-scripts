@@ -156,3 +156,13 @@ sudo ufw allow from 192.168.1.0/24 to any port 3389
 sudo nano /etc/xrdp/xrdp.ini
 sudo systemctl restart xrdp
 ```
+
+## 13. Install Visual Studio Code
+
+```
+sudo apt update
+sudo apt install software-properties-common apt-transport-https curl
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt update
+sudo apt install code
+```
