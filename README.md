@@ -166,3 +166,40 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 sudo apt update
 sudo apt install code
 ```
+
+## 14. Setting up workspace for Laravel project
+
+Install PHP
+```
+sudo apt -y install lsb-release apt-transport-https ca-certificates 
+sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+sudo apt -y install php7.4
+```
+
+Install MYSQL 
+```
+sudo apt install gnupg
+cd /tmp
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
+sudo dpkg -i mysql-apt-config*
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl status mysql
+mysql_secure_installation
+```
+
+Install PEAR
+```
+sudo apt-get install php-xml
+curl -O http://pear.php.net/go-pear.phar
+sudo php -d detect_unicode=0 go-pear.phar
+rm go-pear.phar
+pear version
+```
+
+Install Composer and dependencies
+```
+sudo apt-get install php7.4-{bcmath,bz2,intl,gd,mbstring,mysql,zip,curl,dom}
+sudo apt install composer
+```
