@@ -55,6 +55,13 @@ ssh-keygen -t ed25519 -C "youremail@mail.com"
 cat ~/.ssh/id_ed25519
 ```
 
+## Mount RAID volume
+
+```
+sudo mdadm --stop /dev/md0
+sudo mdadm -A /dev/md0 /dev/sdb ...
+```
+
 ## Format new drive
 ```
 sudo fdisk -l
