@@ -20,7 +20,10 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 nano ~/.zshrc ##Change theme to 'candy'
 ```
 
-## generate ssh key for host & upload to github
+## generate ssh key for host using powershell & upload to github
+```
+ssh-keygen -t ed25519 -C "{user email}"
+```
 
 ## set up ssh for access using github keys
 ```
@@ -62,4 +65,9 @@ sudo usermod -aG docker ${USER}
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 source ~/.zshrc
+```
+
+## generate ssh for github from vm
+```
+ssh-keygen -t ed25519 -C "{user email}"
 ```
